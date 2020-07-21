@@ -1,0 +1,47 @@
+.tab-item{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 50px;
+  min-width: 40em;
+
+  background-color: #bfc4ca;
+
+  border-radius: 3px;
+
+  margin : 20px;
+  padding :0 24px 0 24px;
+
+  box-shadow: 1px 1px 1px 1px #abbcd6;
+}
+.tab-item img{
+  height: 50px;
+
+  background-color: rgb(48, 143, 206);
+
+  border-radius: 50%;
+}
+.program-item{
+  height: 8em;
+  width: 15em;
+
+  background-color: rgb(175, 211, 235);
+
+  border-radius: 10px;
+}
+.program-item img{
+  height: 7em;
+}
+.program-item h3{
+  font-size: 2em;
+  color : rgb(126, 120, 120);
+
+  background-color: #fff;
+  
+  border-radius: 10px;
+}
+.programs-container{
+  display: flex;
+  justify-content: space-between;
+}
