@@ -1,9 +1,10 @@
 import React from 'react';
+import LoginForm from '../../components/Authentication/LoginForm';
 
 export default () => {
-  return(
+  return (
     <>
-      <h1>Hello world ! This is Authentication Page</h1>
+      <LoginForm />
     </>
-  )
-}
+  );
+};
