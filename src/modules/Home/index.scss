@@ -3,16 +3,18 @@ html, body{
 }
 .home-container__info{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   height: 20em ;
   background-color: #1e2a55;
   align-items: center;
 }
 .home-container__info--card{
   height: 15em;
-  width: 30em;
+  min-width: 35em;
+
   background-color: #35416e;
-  margin-left: 30px;
+  margin-right: 10em;
+  margin-left: 10em;
 }
 .home-container__info--statics{
   height: 15em;
@@ -32,8 +34,8 @@ html, body{
 .home-container__info--card__name--avatar-frame{
   height: 80px;
   width: 80px;
-  border-radius: 50%;
-  border: rgba(255, 238, 0, 0.815) 2px solid;
+  border-radius: 35%;
+  border: rgba(255, 6, 6, 0.815) 2px solid;
 }
 .home-container__info--card__name--username{
   color: white
@@ -59,14 +61,12 @@ html, body{
   border-radius: 5px;
   text-align: center;
   box-shadow: 2px 2px 2px 2px #abbcd6;
-
 }
-.home-container__course--item :hover {
 
-}
 .home-container__course--item img{
   max-width: 20em;
   border-radius: 5px;
+
 }
 .home-container__course--item p{
   font-size: 1.5em;

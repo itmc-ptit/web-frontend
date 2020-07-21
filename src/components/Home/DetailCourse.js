@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col,Tabs } from 'antd';
-import {RightOutlined } from '@ant-design/icons';
+import { ArrowAnimation } from '../../components/index';
 import './index.scss'
 
 const { TabPane } = Tabs;
@@ -78,17 +78,21 @@ const programs=[
 const TabIndex = ({icon, name}) => (
   <div className='tab-item' style={{cursor:'pointer'}}>
     <img src={icon} alt="icon"/>
-    <h2 style={{ marginLeft: -10, fontWeight:200 }}>{name}</h2>
-    <RightOutlined style={{fontSize:20, marginRight : 5}} />
+    <h2 style={{ marginLeft: -10, fontWeight:600 }}>{name}</h2>
+    <ArrowAnimation />
   </div>
 )
 
 const TabProgram =({image, name})=>(
   <div className='program-item' align="center">
     <img src={image} alt="detail"/>
-    <h3>
-      {name}
-    </h3>
+    <div style={{display:'flex', backgroundColor:'#fff', borderRadius:'10px', justifyContent:'space-around', alignItems:'center'}}>
+      <h3>
+        {name}
+      </h3>
+      <ArrowAnimation />
+    </div>
+
   </div>
 )
 

@@ -11,8 +11,7 @@ export default () => {
       </div>
       <div className="home-container__course">
         <div style={{padding:'2em', display:'flex', justifyContent:'flex-start'}}>
-          <div style={{marginRight:'5em'}}>
-            <h1>Khoá học</h1>
+          <div style={{margin:'5em 3em'}}>
             <CourseCard />
           </div>
           <div>
