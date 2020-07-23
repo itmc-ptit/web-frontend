@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
-import Editor from 'react-simple-code-editor';
-import dedent from 'dedent';
-import { highlight, languages } from 'prismjs/components/prism-core';
+import React from 'react';
+import Markdown from 'react-markdown';
+import CodeBlock from '../Staff/Markdown/CodeBlock';
 import 'prismjs/components/prism-clike';
+import dedent from 'dedent';
+
 import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-markup';
-import Markdown from 'react-markdown';
-import CodeBlock from './CodeBlock';
-// import doesn't seem to work properly with parcel for jsx
+import './index.scss';
+
+import { BackTop } from 'antd';
+
 require('prismjs/components/prism-c');
 
 export default () => {
-  const [state, setState] = useState({
+  const state = {
     code: dedent`
     # Hướng dẫn sử dụng Markdown
     # Thẻ H1
@@ -49,24 +51,26 @@ export default () => {
     ## Chèn ảnh 
     ![](https://media-exp1.licdn.com/dms/image/C5603AQHE2u1DhEmFYQ/profile-displayphoto-shrink_400_400/0?e=1600905600&v=beta&t=yBBlKR9DMw5uLLKs78oeWL_IX9_Uww9JrFUUvv2acDA)
     `,
-  });
+  };
+
   return (
     <>
-      <div className="post-blog">
-        <div className="add-text-container">
-          <Editor
-            placeholder=""
-            value={state.code}
-            onValueChange={(code) => setState({ code })}
-            highlight={(code) => highlight(code, languages.c)}
-            padding={10}
-            className="container__editor"
+      <div align="center">
+        <div className="lesson-header">
+          <h1>Introduce C++ Basic </h1>
+          <div align="right">
+            <p>Author : Grimmz</p>
+          </div>
+        </div>
+        <div className="lesson-body" align="left">
+          <Markdown
+            renderers={{ code: CodeBlock }}
+            plugins={[require('remark-shortcodes')]}
+            source={state.code}
           />
         </div>
       </div>
-      <div className="preview-container">
-        <Markdown renderers={{ code: CodeBlock }} source={state.code} />
-      </div>
+      <BackTop />
     </>
   );
 };

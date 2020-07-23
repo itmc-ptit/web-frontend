@@ -3,6 +3,8 @@ import { RenderRoutes } from './helper';
 
 import Home from '../modules/Home';
 import { PostBlog } from '../modules/Staff';
+import Lesson from '../modules/Lesson';
+
 import { Layout, Menu } from 'antd';
 import {
   SettingOutlined,
@@ -111,6 +113,7 @@ const ROUTES = [
       );
     },
   },
+
   {
     path: '/staff',
     key: 'STAFF',
@@ -120,6 +123,20 @@ const ROUTES = [
         <ROOTLayout>
           {' '}
           <PostBlog />{' '}
+        </ROOTLayout>
+      );
+    },
+  },
+
+  {
+    path: '/lesson',
+    key: 'LESSON',
+    exact: true,
+    component: () => {
+      return (
+        <ROOTLayout>
+          {' '}
+          <Lesson />{' '}
         </ROOTLayout>
       );
     },
