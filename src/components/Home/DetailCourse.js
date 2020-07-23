@@ -110,7 +110,9 @@ const TabProgram = ({ image, name }) => (
       }}
     >
       <h3>{name}</h3>
-      <ArrowAnimation />
+      <Link to="/programs">
+        <ArrowAnimation />
+      </Link>
     </div>
   </div>
 );
@@ -135,7 +137,7 @@ export default () => {
       <TabPane
         tab={
           <span style={{ fontSize: 40, marginRight: 50, color: '#fff' }}>
-            Programs
+            Test
           </span>
         }
         key="2"
@@ -151,7 +153,7 @@ export default () => {
       <TabPane
         tab={
           <span style={{ fontSize: 40, marginRight: 50, color: '#fff' }}>
-            Test
+            Programs
           </span>
         }
         key="3"

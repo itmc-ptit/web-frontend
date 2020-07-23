@@ -43,7 +43,7 @@ export default () => {
     | alignment | ✔ |
     | wewt      | ✔ |
     ## Link 
-    Follow [Github](//https://github.com/dqbaoptit) của mình nhé. 
+    Follow [Github](//github.com/dqbaoptit) của mình nhé. 
     Mình làm việc chuyên Frontend  ReactJs, Backend thì  một chút Flask/Django. 
     
     ## Chèn ảnh 

@@ -15,6 +15,7 @@ import {
 } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import { Link } from 'react-router-dom';
+import Programs from '../modules/Programs';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -137,6 +138,19 @@ const ROUTES = [
         <ROOTLayout>
           {' '}
           <Lesson />{' '}
+        </ROOTLayout>
+      );
+    },
+  },
+  {
+    path: '/programs',
+    key: 'PROGRAMS',
+    exact: true,
+    component: () => {
+      return (
+        <ROOTLayout>
+          {' '}
+          <Programs />{' '}
         </ROOTLayout>
       );
     },
