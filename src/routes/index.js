@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { RenderRoutes } from './helper';
+import { Link } from 'react-router-dom';
 
 import Home from '../modules/Home';
 import { PostBlog } from '../modules/Staff';
 import Lesson from '../modules/Lesson';
+import Programs from '../modules/Programs';
+import Authen from '../modules/Authentication';
 
 import { Layout, Menu } from 'antd';
 import {
@@ -14,8 +17,6 @@ import {
   AppstoreOutlined,
 } from '@ant-design/icons';
 import 'antd/dist/antd.css';
-import { Link } from 'react-router-dom';
-import Programs from '../modules/Programs';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -107,10 +108,11 @@ const ROUTES = [
     exact: true,
     component: () => {
       return (
-        <ROOTLayout>
-          {' '}
-          <Home />{' '}
-        </ROOTLayout>
+        <Authen />
+        // <ROOTLayout>
+        //   {' '}
+        //   <Home />{' '}
+        // </ROOTLayout>
       );
     },
   },

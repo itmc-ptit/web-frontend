@@ -1,0 +1,152 @@
+.x {
+  overflow: hidden;
+  animation: rotate 30s linear infinite;
+}
+.square {
+  --x: 5vmin;
+}
+.square .square {
+  --x: 5vmin;
+}
+.square .square .square {
+  --x: 5vmin;
+}
+.square .square .square .square {
+  --x: 10vmin;
+}
+.square .square .square .square .square {
+  --x: 10vmin;
+}
+.square .square .square .square .square .square {
+  --x: 10vmin;
+}
+.square .square .square .square .square .square .square {
+  --x: 7vmin;
+}
+.square .square .square .square .square .square .square .square {
+  --x: 5vmin;
+}
+.square {
+  min-width: var(--x);
+  min-height: var(--x);
+  border: 1px solid #f00;
+  position: relative;
+  display: grid;
+  place-items: center;
+  transform: rotate(45deg);
+  background: rgba(255, 0, 0, 0.1)
+    repeating-linear-gradient(
+      to right,
+      rgba(255, 0, 0, 0.1) 0 1px,
+      transparent 0 10px
+    );
+}
+.square::before,
+.square:after {
+  content: '';
+  width: var(--x);
+  height: 3px;
+  position: absolute;
+  top: -1.5px;
+  left: -1.5px;
+  background: #fff;
+  z-index: 1;
+}
+.square:before {
+  animation: spin 4s -2s ease infinite;
+}
+.square:after {
+  animation: spin 4s ease infinite;
+}
+@-moz-keyframes spin {
+  0% {
+    transform: translate(0, 0);
+    width: var(--x);
+  }
+  25% {
+    transform: translate(var(--x), 0);
+    width: calc(var(--x) / 2);
+  }
+  50% {
+    transform: translate(var(--x), var(--x));
+    width: calc(var(--x) / 2);
+  }
+  75% {
+    transform: translate(0, var(--x));
+    width: var(--x);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    transform: translate(0, 0);
+    width: var(--x);
+  }
+  25% {
+    transform: translate(var(--x), 0);
+    width: calc(var(--x) / 2);
+  }
+  50% {
+    transform: translate(var(--x), var(--x));
+    width: calc(var(--x) / 2);
+  }
+  75% {
+    transform: translate(0, var(--x));
+    width: var(--x);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    transform: translate(0, 0);
+    width: var(--x);
+  }
+  25% {
+    transform: translate(var(--x), 0);
+    width: calc(var(--x) / 2);
+  }
+  50% {
+    transform: translate(var(--x), var(--x));
+    width: calc(var(--x) / 2);
+  }
+  75% {
+    transform: translate(0, var(--x));
+    width: var(--x);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: translate(0, 0);
+    width: var(--x);
+  }
+  25% {
+    transform: translate(var(--x), 0);
+    width: calc(var(--x) / 2);
+  }
+  50% {
+    transform: translate(var(--x), var(--x));
+    width: calc(var(--x) / 2);
+  }
+  75% {
+    transform: translate(0, var(--x));
+    width: var(--x);
+  }
+}
+@-moz-keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+@-webkit-keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+@-o-keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
