@@ -5,6 +5,8 @@ import DetailCourse from './Home/DetailCourse';
 import ArrowAnimation from './common/ArrowAnimation';
 import Radeon from './common/Radeon';
 import Border from './common/Border';
+import RegistrationForm from './Authentication/RegistrationForm';
+import SocialLogin from './Authentication/SocialLogin';
 
 export {
   Card,
@@ -14,4 +16,6 @@ export {
   ArrowAnimation,
   Radeon,
   Border,
+  RegistrationForm,
+  SocialLogin,
 };

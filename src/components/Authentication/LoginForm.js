@@ -1,13 +1,12 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import './LoginForm.scss';
 
-function LoginForm(props) {
+function LoginForm({ toggleTab }) {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
   };
-
   return (
     <Form
       name="normal_login"
@@ -17,12 +16,12 @@ function LoginForm(props) {
     >
       <h2>Login</h2>
       <Form.Item
-        name="username"
-        rules={[{ required: true, message: 'Please input your Username!' }]}
+        name="email"
+        rules={[{ required: true, message: 'Please input your Email!' }]}
       >
         <Input
           prefix={<UserOutlined className="site-form-item-icon" />}
-          placeholder="Username"
+          placeholder="Email"
         />
       </Form.Item>
       <Form.Item
@@ -36,11 +35,7 @@ function LoginForm(props) {
         />
       </Form.Item>
       <Form.Item>
-        <Form.Item name="remember" valuePropName="checked" noStyle>
-          <Checkbox>Remember me</Checkbox>
-        </Form.Item>
-
-        <a className="login-form-forgot" href="">
+        <a className="login-form-forgot" aria-disabled>
           Forgot password
         </a>
       </Form.Item>
@@ -49,7 +44,7 @@ function LoginForm(props) {
         <Button type="primary" htmlType="submit" className="login-form-button">
           Log in
         </Button>
-        Or <a href="">register now!</a>
+        Or <a onClick={toggleTab}>register now!</a>
       </Form.Item>
     </Form>
   );
