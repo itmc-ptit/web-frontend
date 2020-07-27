@@ -13,8 +13,6 @@ export default () => {
       <div className="home-container__info">
         <Card />
         <Statics />
-        <Statics />
-        <Statics />
       </div>
       <div className="home-container__course">
         <div

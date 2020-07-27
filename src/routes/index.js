@@ -7,6 +7,7 @@ import { PostBlog } from '../modules/Staff';
 import Lesson from '../modules/Lesson';
 import Programs from '../modules/Programs';
 import Authen from '../modules/Authentication';
+import Test from '../modules/Testing';
 
 import { Layout, Menu } from 'antd';
 import {
@@ -153,6 +154,19 @@ const ROUTES = [
         <ROOTLayout>
           {' '}
           <Programs />{' '}
+        </ROOTLayout>
+      );
+    },
+  },
+  {
+    path: '/testing',
+    key: 'TESTING',
+    exact: true,
+    component: () => {
+      return (
+        <ROOTLayout>
+          {' '}
+          <Test />{' '}
         </ROOTLayout>
       );
     },

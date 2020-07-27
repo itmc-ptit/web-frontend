@@ -1,11 +1,15 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { Login } from './actions';
+
 import './LoginForm.scss';
 
 function LoginForm({ toggleTab }) {
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
+    Login(values)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   };
   return (
     <Form
