@@ -3,7 +3,7 @@ import './ArrowAnimation.scss';
 
 export default () => (
   <div class="arrow">
-  <div class="arrow-top"></div>
-  <div class="arrow-bottom"></div>
-</div>
-)
+    <div class="arrow-top"></div>
+    <div class="arrow-bottom"></div>
+  </div>
+);

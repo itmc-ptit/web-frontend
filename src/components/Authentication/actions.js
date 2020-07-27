@@ -18,3 +18,8 @@ export const Signup = async (values) => {
     throw err;
   }
 };
+
+export const handleAfterLogin = (data) => {
+  localStorage.setItem('accessToken', data.accessToken);
+  window.location.reload(false);
+};

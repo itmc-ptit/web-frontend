@@ -7,6 +7,8 @@ import Radeon from './common/Radeon';
 import Border from './common/Border';
 import RegistrationForm from './Authentication/RegistrationForm';
 import SocialLogin from './Authentication/SocialLogin';
+import Answer from './Testing/Answer';
+import Loader from './common/Loaders';
 
 export {
   Card,
@@ -18,4 +20,6 @@ export {
   Border,
   RegistrationForm,
   SocialLogin,
+  Answer,
+  Loader,
 };

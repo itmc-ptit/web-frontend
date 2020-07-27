@@ -16,6 +16,7 @@ import {
   UserOutlined,
   MailOutlined,
   AppstoreOutlined,
+  LogoutOutlined,
 } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 
@@ -23,6 +24,10 @@ const { Header, Content, Footer, Sider } = Layout;
 
 const ROOTLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(true);
+  const Logout = () => {
+    localStorage.removeItem('accessToken');
+    window.location.reload(false);
+  };
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -74,8 +79,8 @@ const ROOTLayout = ({ children }) => {
             <Menu.Item key="" icon={<AppstoreOutlined />}>
               Fight
             </Menu.Item>
-            <Menu.Item key="" icon={<AppstoreOutlined />}>
-              Liên Hệ
+            <Menu.Item key="" icon={<LogoutOutlined />} onClick={Logout}>
+              Đăng xuất
             </Menu.Item>
           </Menu>
         </Header>
@@ -108,12 +113,17 @@ const ROUTES = [
     key: 'ROOT',
     exact: true,
     component: () => {
+      const userLogged = localStorage.getItem('accessToken');
       return (
-        <Authen />
-        // <ROOTLayout>
-        //   {' '}
-        //   <Home />{' '}
-        // </ROOTLayout>
+        <>
+          {userLogged ? (
+            <ROOTLayout>
+              <Home />
+            </ROOTLayout>
+          ) : (
+            <Authen />
+          )}
+        </>
       );
     },
   },

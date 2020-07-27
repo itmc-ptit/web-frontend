@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Signup } from './actions';
+import { Signup, handleAfterLogin } from './actions';
+import { Loader } from '../index';
 
 const RegistrationForm = ({ toggleTab }) => {
+  const [isLoading, setIsloading] = useState(false);
+
   const onFinish = (values) => {
+    setIsloading(true);
+
     Signup(values)
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .then((res) => {
+        setIsloading(false);
+        handleAfterLogin(res.data);
+      })
+      .catch((err) => {
+        setIsloading(false);
+        console.log(err);
+      });
   };
 
   return (
@@ -43,8 +54,13 @@ const RegistrationForm = ({ toggleTab }) => {
         </a>
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit" className="login-form-button">
-          Sign up
+        <Button
+          type="primary"
+          htmlType="submit"
+          className="login-form-button"
+          disabled={isLoading}
+        >
+          {!isLoading ? 'Sign up' : <Loader />}
         </Button>
       </Form.Item>
     </Form>
