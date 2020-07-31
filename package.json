@@ -4,13 +4,9 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.2.1",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
     "antd": "^4.4.2",
     "axios": "^0.19.2",
     "dedent": "^0.7.0",
-    "netlify-cli": "^2.58.0",
     "node-sass": "^4.14.1",
     "prismjs": "^1.20.0",
     "prop-types": "^15.7.2",
@@ -27,6 +23,12 @@
     "remark-shortcodes": "^0.3.1",
     "remark-toc": "^7.0.0",
     "unist-util-visit-parents": "^3.1.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^2.58.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
