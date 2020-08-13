@@ -1,5 +1,14 @@
 import Api from '../../config/axious';
-import { LOGIN, SIGNUP } from './constants';
+import { LOGIN, SIGNUP, LOGIN_GOOGLE, USER } from './constants';
+
+export const UserFindMe = async () => {
+  try {
+    const { data } = await Api.get(USER);
+    return data;
+  } catch (err) {
+    throw err;
+  }
+};
 
 export const Login = async (values) => {
   try {
@@ -17,9 +26,4 @@ export const Signup = async (values) => {
   } catch (err) {
     throw err;
   }
-};
-
-export const handleAfterLogin = (data) => {
-  localStorage.setItem('accessToken', data.accessToken);
-  window.location.reload(false);
 };

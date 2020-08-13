@@ -52,17 +52,15 @@ c9.24,0,15.36-6.5,15.36-15.64c0-1.17-0.11-2.29-0.31-3.36C31.05,21,16,21,16,21z"
       </svg>
       <div className="wrapper">
         <div className="connect">
-          <a href rel="author" className="share google">
+          <a
+            href="https://itmc.herokuapp.com/api/auth/google"
+            rel="author"
+            className="share google"
+          >
             <svg role="presentation" className="svg--icon">
               <use xlinkHref="#svg--google" />
             </svg>
             <span className="clip">GOOGLE +</span>
-          </a>
-          <a href rel="author" className="share facebook">
-            <svg role="presentation" className="svg--icon">
-              <use xlinkHref="#svg--facebook" />
-            </svg>
-            <span className="clip">FACEBOOK</span>
           </a>
         </div>
       </div>

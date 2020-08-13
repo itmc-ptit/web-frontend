@@ -1,16 +1,35 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Signup, handleAfterLogin } from './actions';
+import { Signup } from './actions';
 import { Loader } from '../index';
 
 const RegistrationForm = ({ toggleTab }) => {
+  const history = useHistory();
   const [isLoading, setIsloading] = useState(false);
+  const [state, setState] = useState({
+    email: '',
+    password: '',
+    password1: '',
+  });
+  const handleAfterLogin = (data) => {
+    localStorage.setItem(
+      'user',
+      JSON.stringify({ firstName: '', lastName: '', school: '', studentID: '' })
+    );
+    localStorage.setItem('accessToken', data.accessToken);
 
-  const onFinish = (values) => {
+    history.push('/');
+  };
+  const handleChange = (e) => {
+    const { name } = e.target;
+    setState({ ...state, [name]: e.target.value });
+  };
+  const onFinish = () => {
     setIsloading(true);
 
-    Signup(values)
+    Signup({ email: state.email, password: state.password })
       .then((res) => {
         setIsloading(false);
         handleAfterLogin(res.data);
@@ -30,22 +49,36 @@ const RegistrationForm = ({ toggleTab }) => {
     >
       <h2>Sign up</h2>
       <Form.Item
-        name="email"
         rules={[{ required: true, message: 'Please input your Email!' }]}
       >
         <Input
           prefix={<UserOutlined className="site-form-item-icon" />}
           placeholder="Email"
+          name="email"
+          onChange={handleChange}
+          type="email"
         />
       </Form.Item>
       <Form.Item
-        name="password"
         rules={[{ required: true, message: 'Please input your Password!' }]}
       >
         <Input
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
-          placeholder="Password"
+          name="password"
+          placeholder="Mật khẩu"
+          onChange={handleChange}
+        />
+      </Form.Item>
+      <Form.Item
+        rules={[{ required: true, message: 'Please input your Password!' }]}
+      >
+        <Input
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          type="password"
+          name="password1"
+          placeholder="Nhập lại mật khẩu"
+          onChange={handleChange}
         />
       </Form.Item>
       <Form.Item>
@@ -58,7 +91,7 @@ const RegistrationForm = ({ toggleTab }) => {
           type="primary"
           htmlType="submit"
           className="login-form-button"
-          disabled={isLoading}
+          disabled={isLoading && state.password === state.password1}
         >
           {!isLoading ? 'Sign up' : <Loader />}
         </Button>

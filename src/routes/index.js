@@ -8,10 +8,10 @@ import Lesson from '../modules/Lesson';
 import Programs from '../modules/Programs';
 import Authen from '../modules/Authentication';
 import Test from '../modules/Testing';
+import Profile from '../modules/Profile';
 
 import { Layout, Menu } from 'antd';
 import {
-  SettingOutlined,
   HomeOutlined,
   UserOutlined,
   MailOutlined,
@@ -26,6 +26,7 @@ const ROOTLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(true);
   const Logout = () => {
     localStorage.removeItem('accessToken');
+    localStorage.removeItem('user');
     window.location.reload(false);
   };
 
@@ -50,14 +51,7 @@ const ROOTLayout = ({ children }) => {
             icon={<UserOutlined style={{ fontSize: 25 }} />}
             style={{ marginTop: 20 }}
           >
-            Profile{' '}
-          </Menu.Item>
-          <Menu.Item
-            key="9"
-            icon={<SettingOutlined style={{ fontSize: 25 }} />}
-            style={{ marginTop: 20 }}
-          >
-            Settings{' '}
+            <Link to="/profile">Profile</Link>
           </Menu.Item>
         </Menu>
       </Sider>
@@ -66,7 +60,10 @@ const ROOTLayout = ({ children }) => {
         {/*  */}
         <Header
           className="site-layout-background"
-          style={{ display: 'flex', justifyContent: 'space-between' }}
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
         >
           <img src="https://itmc-ptithcm.github.io/img/logo.svg" alt="logo" />
           <Menu mode="horizontal" theme="dark">
@@ -177,6 +174,19 @@ const ROUTES = [
         <ROOTLayout>
           {' '}
           <Test />{' '}
+        </ROOTLayout>
+      );
+    },
+  },
+  {
+    path: '/profile',
+    key: 'PROFILE',
+    exact: true,
+    component: () => {
+      return (
+        <ROOTLayout>
+          {' '}
+          <Profile />{' '}
         </ROOTLayout>
       );
     },

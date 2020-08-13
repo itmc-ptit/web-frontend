@@ -1,17 +1,32 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
-import { Login, handleAfterLogin } from './actions';
+import { Login, UserFindMe } from './actions';
 import { Loader } from '../index';
 import './LoginForm.scss';
 
 function LoginForm({ toggleTab }) {
+  const history = useHistory();
+
   const [isLoading, setIsloading] = useState(false);
+  const handleAfterLogin = (data) => {
+    localStorage.setItem('accessToken', data.accessToken);
+
+    UserFindMe()
+      .then((res) => {
+        localStorage.setItem('user', JSON.stringify(res.data));
+        history.push('/');
+      })
+      .catch((err) => console.log(err));
+  };
   const onFinish = (values) => {
     setIsloading(true);
     Login(values)
       .then((res) => {
         setIsloading(false);
+
         handleAfterLogin(res.data);
       })
       .catch((err) => {

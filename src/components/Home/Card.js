@@ -1,19 +1,43 @@
-import React from 'react'
-import DEV from '../../statics/dev.png';
-export default () =>{
-  return(
+import React from 'react';
+
+export default ({ image, name, school, ID }) => {
+  return (
     <div className="home-container__info--card">
       <div className="home-container__info--card__name">
         <div className="home-container__info--card__name--avatar">
-          <img alt="avatar" src={DEV} className="home-container__info--card__name--avatar-frame" />
+          <img
+            alt="avatar"
+            src={image}
+            className="home-container__info--card__name--avatar-frame"
+          />
         </div>
-        <div className="home-container__info--card__name--username">
-          <h1 style={{fontSize: 35, color: '#fff'}}>Dương Quốc Bảo</h1>
+        <div
+          className="home-container__info--card__name--username"
+          style={{ maxWidth: 300, maxHeight: 100 }}
+        >
+          <h1 style={{ fontSize: 30, color: '#fff' }}>{name}</h1>
+          {school && (
+            <>
+              <h1
+                style={{ marginTop: 30, fontSize: 15, color: '#fff' }}
+              >{`Trường : ${school} `}</h1>
+              <h1
+                style={{ marginTop: 30, fontSize: 15, color: '#fff' }}
+              >{` ID : ${ID} `}</h1>
+            </>
+          )}
         </div>
       </div>
-      <div className="progressing" style={{marginLeft:10,maxWidth: '80%', marginTop:'20%',height:10, backgroundColor:'#29ee48', }}>
-
-      </div>
+      <div
+        className="progressing"
+        style={{
+          marginLeft: 10,
+          maxWidth: '80%',
+          marginTop: '20%',
+          height: 10,
+          backgroundColor: '#29ee48',
+        }}
+      ></div>
     </div>
-  ); 
-}
+  );
+};

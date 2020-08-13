@@ -1,7 +1,6 @@
 import React from 'react';
 import LoginForm from '../../components/Authentication/LoginForm';
 import { RegistrationForm, SocialLogin } from '../../components/index';
-import Menu from './Menu';
 import thumbnail from '../../statics/itmc.jpg';
 import { Layout } from 'antd';
 import './index.scss';
@@ -11,24 +10,17 @@ export default () => {
   const changeTab = () => setOnLogin(!onLogin);
   return (
     <>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <Menu>
-          <div className="form-container">
-            <div style={{ padding: '50px 30px' }}>
-              {onLogin ? (
-                <LoginForm toggleTab={changeTab} />
-              ) : (
-                <RegistrationForm toggleTab={changeTab} />
-              )}
-              <SocialLogin />
-            </div>
+      <div className="header-container" align="center">
+        <div className="form-container">
+          <div style={{ padding: '50px 30px' }}>
+            {onLogin ? (
+              <LoginForm toggleTab={changeTab} />
+            ) : (
+              <RegistrationForm toggleTab={changeTab} />
+            )}
+            <SocialLogin />
           </div>
-        </Menu>
+        </div>
       </div>
       {/*  */}
       <div align="center">

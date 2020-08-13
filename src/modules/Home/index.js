@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.scss';
 import {
   Card,
-  Statics,
   CourseCard,
   DetailCourse,
+  Statics,
 } from '../../components/index';
 
 export default () => {
+  const profile = JSON.parse(localStorage.getItem('user'));
   return (
     <div className="home-container">
       <div className="home-container__info">
-        <Card />
-        <Statics />
+        {profile && (
+          <Card
+            name={`${profile.lastName} ${profile.firstName}`}
+            ID={profile.studentID}
+            school={profile.school}
+          />
+        )}
       </div>
+
       <div className="home-container__course">
         <div
           style={{
