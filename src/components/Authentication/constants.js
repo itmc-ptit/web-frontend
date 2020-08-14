@@ -1,4 +1,4 @@
-export const LOGIN = '/api/auth/login';
-export const SIGNUP = '/api/auth/signup';
-export const LOGIN_GOOGLE = '/api/auth/google';
-export const USER = 'api/user/profile';
+export const LOGIN = '/api/v1/auth/login';
+export const SIGNUP = '/api/v1/auth/signup';
+export const LOGIN_GOOGLE = '/api/v1/auth/google';
+export const USER = 'api/v1/user/profile';

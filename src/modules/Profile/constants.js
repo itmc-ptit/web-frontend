@@ -1,1 +1,1 @@
-export const PROFILE = 'api/user/profile';
+export const PROFILE = 'api/v1/user/profile';
