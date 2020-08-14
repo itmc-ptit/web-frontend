@@ -1,6 +1,6 @@
 import React from 'react';
-import {Route, Switch} from 'react-router-dom';
-import { localStorageConstant} from '../constants';
+import { Route, Switch } from 'react-router-dom';
+import { localStorageConstant } from '../constants';
 
 const RouteWithSubRoutes = (route) => (
   <Route
@@ -10,20 +10,18 @@ const RouteWithSubRoutes = (route) => (
   />
 );
 
-export const RenderRoutes = ({routes}) =>(
+export const RenderRoutes = ({ routes }) => (
   <Switch>
-    {routes.map((route)=>(
+    {routes.map((route) => (
       <RouteWithSubRoutes key={route.key} {...route} />
     ))}
-    <Route component={()=> <h1>Page not found ! 404 Error</h1>} />
+    <Route component={() => <h1>Page not found ! 404 Error</h1>} />
   </Switch>
 );
 
 export const isServer = typeof window === 'undefined';
 
 export const isLoggedIn = () => {
-  const token = localStorage.getItem(localStorageConstant.ACCESS_TOKEN);
+  const token = localStorage.getItem('accessToken');
   return !isServer ? !!token : false;
 };
-
-

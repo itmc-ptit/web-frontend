@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { RenderRoutes } from './helper';
-import { Link } from 'react-router-dom';
+import { RenderRoutes, isLoggedIn } from './helper';
+import { Link, Redirect } from 'react-router-dom';
 
 import Home from '../modules/Home';
-import { PostBlog } from '../modules/Staff';
+import Staff from '../modules/Staff';
 import Lesson from '../modules/Lesson';
 import Programs from '../modules/Programs';
 import Authen from '../modules/Authentication';
@@ -110,7 +110,7 @@ const ROUTES = [
     key: 'ROOT',
     exact: true,
     component: () => {
-      const userLogged = localStorage.getItem('accessToken');
+      const userLogged = isLoggedIn();
       return (
         <>
           {userLogged ? (
@@ -130,38 +130,79 @@ const ROUTES = [
     key: 'STAFF',
     exact: true,
     component: () => {
+      const userLogged = isLoggedIn();
       return (
-        <ROOTLayout>
-          {' '}
-          <PostBlog />{' '}
-        </ROOTLayout>
+        <>
+          {userLogged ? (
+            <ROOTLayout>
+              {' '}
+              <Staff />{' '}
+            </ROOTLayout>
+          ) : (
+            <Authen />
+          )}
+        </>
       );
     },
   },
 
   {
     path: '/lesson',
-    key: 'LESSON',
+    key: 'LESSON_ROOT',
     exact: true,
     component: () => {
+      const userLogged = isLoggedIn();
       return (
-        <ROOTLayout>
-          {' '}
-          <Lesson />{' '}
-        </ROOTLayout>
+        <>
+          {userLogged ? (
+            <ROOTLayout>
+              <h1>Hello ./</h1>
+            </ROOTLayout>
+          ) : (
+            <Authen />
+          )}
+        </>
       );
     },
   },
+  {
+    path: '/lesson/:id',
+    key: 'LESSON_DETAIL',
+    exact: true,
+    component: () => {
+      const userLogged = isLoggedIn();
+      return (
+        <>
+          {userLogged ? (
+            <ROOTLayout>
+              <Lesson />
+            </ROOTLayout>
+          ) : (
+            <Authen />
+          )}
+        </>
+      );
+    },
+  },
+
   {
     path: '/programs',
     key: 'PROGRAMS',
     exact: true,
     component: () => {
+      const userLogged = isLoggedIn();
+
       return (
-        <ROOTLayout>
-          {' '}
-          <Programs />{' '}
-        </ROOTLayout>
+        <>
+          {userLogged ? (
+            <ROOTLayout>
+              {' '}
+              <Programs />{' '}
+            </ROOTLayout>
+          ) : (
+            <Authen />
+          )}
+        </>
       );
     },
   },
@@ -170,11 +211,18 @@ const ROUTES = [
     key: 'TESTING',
     exact: true,
     component: () => {
+      const userLogged = isLoggedIn();
       return (
-        <ROOTLayout>
-          {' '}
-          <Test />{' '}
-        </ROOTLayout>
+        <>
+          {userLogged ? (
+            <ROOTLayout>
+              {' '}
+              <Test />{' '}
+            </ROOTLayout>
+          ) : (
+            <Authen />
+          )}
+        </>
       );
     },
   },
@@ -183,11 +231,18 @@ const ROUTES = [
     key: 'PROFILE',
     exact: true,
     component: () => {
+      const userLogged = isLoggedIn();
       return (
-        <ROOTLayout>
-          {' '}
-          <Profile />{' '}
-        </ROOTLayout>
+        <>
+          {userLogged ? (
+            <ROOTLayout>
+              {' '}
+              <Profile />{' '}
+            </ROOTLayout>
+          ) : (
+            <Authen />
+          )}
+        </>
       );
     },
   },

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Editor from 'react-simple-code-editor';
 import dedent from 'dedent';
 import { highlight, languages } from 'prismjs/components/prism-core';
@@ -7,10 +8,13 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-markup';
 import Markdown from 'react-markdown';
 import CodeBlock from './CodeBlock';
+
+import { AddContent } from '../actions';
 // import doesn't seem to work properly with parcel for jsx
 require('prismjs/components/prism-c');
 
 export default () => {
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     code: dedent`
     # Hướng dẫn sử dụng Markdown
@@ -57,7 +61,10 @@ export default () => {
           <Editor
             placeholder=""
             value={state.code}
-            onValueChange={(code) => setState({ code })}
+            onValueChange={(code) => {
+              setState({ code });
+              dispatch(AddContent(code));
+            }}
             highlight={(code) => highlight(code, languages.c)}
             padding={10}
             className="container__editor"

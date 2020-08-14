@@ -12,11 +12,18 @@ const RegistrationForm = ({ toggleTab }) => {
     email: '',
     password: '',
     password1: '',
+    firstName: '',
+    lastName: '',
   });
   const handleAfterLogin = (data) => {
     localStorage.setItem(
       'user',
-      JSON.stringify({ firstName: '', lastName: '', school: '', studentID: '' })
+      JSON.stringify({
+        firstName: state.firstName,
+        lastName: state.lastName,
+        school: '',
+        studentID: '',
+      })
     );
     localStorage.setItem('accessToken', data.accessToken);
 
@@ -29,7 +36,12 @@ const RegistrationForm = ({ toggleTab }) => {
   const onFinish = () => {
     setIsloading(true);
 
-    Signup({ email: state.email, password: state.password })
+    Signup({
+      email: state.email,
+      password: state.password,
+      firstName: state.firstName,
+      lastName: state.lastName,
+    })
       .then((res) => {
         setIsloading(false);
         handleAfterLogin(res.data);
@@ -55,6 +67,7 @@ const RegistrationForm = ({ toggleTab }) => {
           prefix={<UserOutlined className="site-form-item-icon" />}
           placeholder="Email"
           name="email"
+          required
           onChange={handleChange}
           type="email"
         />
@@ -66,6 +79,7 @@ const RegistrationForm = ({ toggleTab }) => {
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           name="password"
+          required
           placeholder="Mật khẩu"
           onChange={handleChange}
         />
@@ -77,7 +91,30 @@ const RegistrationForm = ({ toggleTab }) => {
           prefix={<LockOutlined className="site-form-item-icon" />}
           type="password"
           name="password1"
+          required
           placeholder="Nhập lại mật khẩu"
+          onChange={handleChange}
+        />
+      </Form.Item>
+      <Form.Item
+        rules={[{ required: true, message: 'Please input your first name!' }]}
+      >
+        <Input
+          type="text"
+          name="firstName"
+          required
+          placeholder="First name"
+          onChange={handleChange}
+        />
+      </Form.Item>
+      <Form.Item
+        rules={[{ required: true, message: 'Please input your last name!' }]}
+      >
+        <Input
+          type="text"
+          name="lastName"
+          required
+          placeholder="Last name"
           onChange={handleChange}
         />
       </Form.Item>
