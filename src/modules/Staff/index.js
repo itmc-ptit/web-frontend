@@ -41,7 +41,7 @@ export default () => {
 
   const handleUpload = () => {
     PostLesson(courses._id, { name: state.new_name, content: content })
-      .then((res) => history.push(`/lesson/${res.data._id}`))
+      .then((res) => history.push(`${courses._id}/lesson/${res.data._id}`))
       .catch((err) => console.log(err));
   };
 
@@ -49,7 +49,7 @@ export default () => {
     UpdateLesson(courses._id, state.name, {
       content: content,
     })
-      .then((res) => history.push(`/lesson/${res.data._id}`))
+      .then((res) => history.push(`${courses._id}/lesson/${res.data._id}`))
       .catch((err) => console.log(err));
   };
 

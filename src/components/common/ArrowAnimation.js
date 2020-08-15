@@ -2,8 +2,8 @@ import React from 'react';
 import './ArrowAnimation.scss';
 
 export default () => (
-  <div class="arrow">
-    <div class="arrow-top"></div>
-    <div class="arrow-bottom"></div>
+  <div className="arrow">
+    <div className="arrow-top"></div>
+    <div className="arrow-bottom"></div>
   </div>
 );

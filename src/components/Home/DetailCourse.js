@@ -1,48 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { Row, Col, Tabs } from 'antd';
 import { ArrowAnimation } from '../../components/index';
 import './index.scss';
 
 const { TabPane } = Tabs;
-
-const lesson = [
-  {
-    name: 'Introduce C++ basic',
-    icon:
-      'https://storage.googleapis.com/programminghub/course_icons/andriod/001.png',
-  },
-  {
-    name: 'Giving Input to program',
-    icon:
-      'https://storage.googleapis.com/programminghub/course_icons/andriod/008.png',
-  },
-  {
-    name: 'Decisions making',
-    icon:
-      'https://storage.googleapis.com/programminghub/course_icons/andriod/004.png',
-  },
-  {
-    name: 'Array',
-    icon:
-      'https://storage.googleapis.com/programminghub/course_icons/andriod/017.png',
-  },
-  {
-    name: 'Function',
-    icon:
-      'https://storage.googleapis.com/programminghub/course_icons/andriod/007.png',
-  },
-  {
-    name: 'Strings',
-    icon:
-      'https://storage.googleapis.com/programminghub/course_icons/andriod/018.png',
-  },
-  {
-    name: 'Loop',
-    icon:
-      'https://storage.googleapis.com/programminghub/course_icons/andriod/002.png',
-  },
-];
 
 const programs = [
   {
@@ -87,13 +49,13 @@ const programs = [
   },
 ];
 
-const TabIndex = ({ icon, name }) => (
+const TabIndex = ({ name, goToDetail }) => (
   <div className="tab-item" style={{ cursor: 'pointer' }}>
-    <img src={icon} alt="icon" />
+    <div style={{}}></div>
     <h2 style={{ marginLeft: -10, fontWeight: 600 }}>{name}</h2>
-    <Link to="/lesson">
+    <a onClick={goToDetail}>
       <ArrowAnimation />
-    </Link>
+    </a>
   </div>
 );
 
@@ -117,7 +79,8 @@ const TabProgram = ({ image, name }) => (
   </div>
 );
 
-export default () => {
+export default ({ courseId, lessons }) => {
+  const history = useHistory();
   return (
     <Tabs defaultActiveKey="1">
       <TabPane
@@ -129,26 +92,17 @@ export default () => {
         key="1"
       >
         <div align="center">
-          {lesson.map((item, index) => (
-            <TabIndex icon={item.icon} name={item.name} key={index} />
-          ))}
+          {lessons &&
+            lessons.map((item, index) => (
+              <TabIndex
+                name={item.name}
+                key={index}
+                goToDetail={() =>
+                  history.push(`${courseId}/lesson/${item._id}`)
+                }
+              />
+            ))}
         </div>
-      </TabPane>
-      <TabPane
-        tab={
-          <span style={{ fontSize: 40, marginRight: 50, color: '#fff' }}>
-            Test
-          </span>
-        }
-        key="2"
-      >
-        <Row gutter={[40, 40]} className="programs-container">
-          {programs.map((item, index) => (
-            <Col span={8}>
-              <TabProgram name={item.name} image={item.image} key={index} />
-            </Col>
-          ))}
-        </Row>
       </TabPane>
       <TabPane
         tab={

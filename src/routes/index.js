@@ -20,16 +20,18 @@ import {
 } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 
+import jwtDecode from 'jwt-decode';
+
 const { Header, Content, Footer, Sider } = Layout;
 
 const ROOTLayout = ({ children }) => {
   const [collapsed, setCollapsed] = useState(true);
+  const role = jwtDecode(localStorage.getItem('accessToken')).role;
   const Logout = () => {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('user');
     window.location.reload(false);
   };
-
   return (
     <Layout style={{ minHeight: '100vh' }}>
       <Sider
@@ -67,15 +69,17 @@ const ROOTLayout = ({ children }) => {
         >
           <img src="https://itmc-ptithcm.github.io/img/logo.svg" alt="logo" />
           <Menu mode="horizontal" theme="dark">
-            <Menu.Item key="mail" icon={<MailOutlined />}>
-              <Link to="/staff">STAFF</Link>
-            </Menu.Item>
-            <Menu.Item key="app" icon={<AppstoreOutlined />}>
+            {role === 'staff' && (
+              <Menu.Item key="mail" icon={<MailOutlined />}>
+                <Link to="/staff">STAFF</Link>
+              </Menu.Item>
+            )}
+            {/* <Menu.Item key="app" icon={<AppstoreOutlined />}>
               Training
             </Menu.Item>
             <Menu.Item key="" icon={<AppstoreOutlined />}>
               Fight
-            </Menu.Item>
+            </Menu.Item> */}
             <Menu.Item key="" icon={<LogoutOutlined />} onClick={Logout}>
               Đăng xuất
             </Menu.Item>
@@ -166,7 +170,7 @@ const ROUTES = [
     },
   },
   {
-    path: '/lesson/:id',
+    path: '/:courseID/lesson/:id',
     key: 'LESSON_DETAIL',
     exact: true,
     component: () => {

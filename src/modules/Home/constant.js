@@ -1,1 +1,2 @@
-export const USER = 'api/v1/user/profile';
+export const USER = '/user/profile';
+export const COURSE = '/course';
