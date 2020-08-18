@@ -52,6 +52,9 @@ export default () => {
             />
           </div>
         </div>
+        <div>
+          <h1>Click here to test your self</h1>
+        </div>
         <BackTop />
       </Spin>
     </>

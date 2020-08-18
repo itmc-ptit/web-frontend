@@ -94,13 +94,12 @@ export default ({ courseId, lessons }) => {
         <div align="center">
           {lessons &&
             lessons.map((item, index) => (
-              <TabIndex
-                name={item.name}
-                key={index}
-                goToDetail={() =>
-                  history.push(`${courseId}/lesson/${item._id}`)
-                }
-              />
+              <div
+                onClick={() => history.push(`${courseId}/lesson/${item._id}`)}
+                style={{ cursor: 'pointer' }}
+              >
+                <TabIndex key={index} name={item.name} key={index} />
+              </div>
             ))}
         </div>
       </TabPane>
@@ -114,7 +113,7 @@ export default ({ courseId, lessons }) => {
       >
         <Row gutter={[40, 40]} className="programs-container">
           {programs.map((item, index) => (
-            <Col span={8}>
+            <Col key={index} span={8}>
               <TabProgram name={item.name} image={item.image} key={index} />
             </Col>
           ))}

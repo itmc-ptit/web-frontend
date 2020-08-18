@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import { Form, Input, Button } from 'antd';
+import { Form, Input, Button, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { Login, UserFindMe } from './actions';
 import { Loader } from '../index';
@@ -21,19 +21,26 @@ function LoginForm({ toggleTab }) {
       })
       .catch((err) => console.log(err));
   };
-  const onFinish = (values) => {
+  const onFinish = async (values) => {
     setIsloading(true);
     Login(values)
       .then((res) => {
         setIsloading(false);
-
         handleAfterLogin(res.data);
       })
       .catch((err) => {
         setIsloading(false);
-        console.log(err);
+        console.log(JSON.stringify(err));
+        message.error({
+          content: err.descriptions,
+          className: 'custom-class',
+          style: {
+            marginTop: '20vh',
+          },
+        });
       });
   };
+
   return (
     <Form
       name="normal_login"

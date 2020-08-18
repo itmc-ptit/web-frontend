@@ -21,6 +21,7 @@ import {
 import 'antd/dist/antd.css';
 
 import jwtDecode from 'jwt-decode';
+import Preview from '../modules/Staff/Preview';
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -141,6 +142,27 @@ const ROUTES = [
             <ROOTLayout>
               {' '}
               <Staff />{' '}
+            </ROOTLayout>
+          ) : (
+            <Authen />
+          )}
+        </>
+      );
+    },
+  },
+
+  {
+    path: '/staff/preview-ex',
+    key: 'STAFF_PREVIEW',
+    exact: true,
+    component: () => {
+      const userLogged = isLoggedIn();
+      return (
+        <>
+          {userLogged ? (
+            <ROOTLayout>
+              {' '}
+              <Preview />{' '}
             </ROOTLayout>
           ) : (
             <Authen />

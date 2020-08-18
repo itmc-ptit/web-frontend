@@ -15,20 +15,6 @@ const RegistrationForm = ({ toggleTab }) => {
     firstName: '',
     lastName: '',
   });
-  const handleAfterLogin = (data) => {
-    localStorage.setItem(
-      'user',
-      JSON.stringify({
-        firstName: state.firstName,
-        lastName: state.lastName,
-        school: '',
-        studentID: '',
-      })
-    );
-    localStorage.setItem('accessToken', data.accessToken);
-
-    history.push('/');
-  };
   const handleChange = (e) => {
     const { name } = e.target;
     setState({ ...state, [name]: e.target.value });
@@ -44,7 +30,7 @@ const RegistrationForm = ({ toggleTab }) => {
     })
       .then((res) => {
         setIsloading(false);
-        handleAfterLogin(res.data);
+        window.location.reload(false);
       })
       .catch((err) => {
         setIsloading(false);

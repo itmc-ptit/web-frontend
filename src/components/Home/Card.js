@@ -7,7 +7,7 @@ export default ({ image, name, school, ID }) => {
         <div className="home-container__info--card__name--avatar">
           <img
             alt="avatar"
-            src={image}
+            src="https://png.pngtree.com/png-clipart/20190903/original/pngtree-couple-boy-cute-avatar-png-image_4445471.jpg"
             className="home-container__info--card__name--avatar-frame"
           />
         </div>

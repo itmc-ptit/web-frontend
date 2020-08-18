@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const HOST = process.env.API_URI || 'https://itmc.herokuapp.com/api/v1';
+export const HOST = process.env.API_URI || 'https://itmc.herokuapp.com/api/v1/';
 
 const Api = axios.create({
   baseURL: HOST,
