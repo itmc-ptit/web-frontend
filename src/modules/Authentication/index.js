@@ -9,17 +9,15 @@ export default () => {
   const [onLogin, setOnLogin] = React.useState(true);
   const changeTab = () => setOnLogin(!onLogin);
   return (
-    <>
+    <div className="landing">
       <div className="header-container" align="center">
         <div className="form-container">
-          <div style={{ padding: '50px 30px' }}>
-            {onLogin ? (
-              <LoginForm toggleTab={changeTab} />
-            ) : (
-              <RegistrationForm toggleTab={changeTab} />
-            )}
-            <SocialLogin />
-          </div>
+          {onLogin ? (
+            <LoginForm toggleTab={changeTab} />
+          ) : (
+            <RegistrationForm toggleTab={changeTab} />
+          )}
+          <SocialLogin />
         </div>
       </div>
       {/*  */}
@@ -47,6 +45,6 @@ export default () => {
       >
         Information Technology Multimedia Club
       </Layout.Footer>
-    </>
+    </div>
   );
 };

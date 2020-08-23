@@ -10,6 +10,7 @@ import './LoginForm.scss';
 function LoginForm({ toggleTab }) {
   const history = useHistory();
 
+  const [err, setErr] = useState('');
   const [isLoading, setIsloading] = useState(false);
   const handleAfterLogin = (data) => {
     localStorage.setItem('accessToken', data.accessToken);
@@ -30,14 +31,7 @@ function LoginForm({ toggleTab }) {
       })
       .catch((err) => {
         setIsloading(false);
-        console.log(JSON.stringify(err));
-        message.error({
-          content: err.descriptions,
-          className: 'custom-class',
-          style: {
-            marginTop: '20vh',
-          },
-        });
+        setErr(err.response.data.error.descriptions[0]);
       });
   };
 
@@ -48,7 +42,9 @@ function LoginForm({ toggleTab }) {
       initialValues={{ remember: true }}
       onFinish={onFinish}
     >
-      <h2>Login</h2>
+      <h2 className="title-form">Login</h2>
+      {err !== '' && <p style={{ color: 'red' }}>[{err}]</p>}
+
       <Form.Item
         name="email"
         rules={[{ required: true, message: 'Please input your Email!' }]}

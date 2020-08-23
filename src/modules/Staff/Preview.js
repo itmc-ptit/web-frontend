@@ -158,10 +158,10 @@ export default () => {
           const questions = exercises.questions.map((item) => {
             const tmp = [...item.answers];
             const arr = [
-              { answers: tmp[0].ansA, correct: tmp[0].correct },
-              { answers: tmp[1].ansB, correct: tmp[1].correct },
-              { answers: tmp[2].ansC, correct: tmp[2].correct },
-              { answers: tmp[3].ansD, correct: tmp[3].correct },
+              { content: tmp[0].ansA, correct: tmp[0].correct },
+              { content: tmp[1].ansB, correct: tmp[1].correct },
+              { content: tmp[2].ansC, correct: tmp[2].correct },
+              { content: tmp[3].ansD, correct: tmp[3].correct },
             ];
             return { question: item.question, answers: [...arr] };
           });

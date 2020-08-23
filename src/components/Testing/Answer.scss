@@ -119,9 +119,7 @@ h5 {
   &:hover &-front {
     opacity: 0.6;
   }
-  // &:hover &-back {
-  //   //z-index: 2 !important;
-  // }
+
   .line-numbers {
     @extend code;
 

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Markdown from 'react-markdown';
 import CodeBlock from '../Staff/Markdown/CodeBlock';
 import 'prismjs/components/prism-clike';
@@ -15,6 +16,7 @@ import { BackTop, Spin } from 'antd';
 require('prismjs/components/prism-c');
 
 export default () => {
+  const history = useHistory();
   const [isLoading, setIsloading] = useState(false);
   const [lesson, setLesson] = useState({});
   const courseID = window.location.href.split('/')[3];
@@ -52,8 +54,16 @@ export default () => {
             />
           </div>
         </div>
-        <div>
-          <h1>Click here to test your self</h1>
+
+        <div
+          className="upload-button"
+          onClick={() =>
+            history.push(`/${courseID}/lesson/${lessonID}/testing`)
+          }
+        >
+          <strong style={{ fontSize: 20, fontWeight: 'bold' }}>
+            Làm kiểm tra
+          </strong>
         </div>
         <BackTop />
       </Spin>

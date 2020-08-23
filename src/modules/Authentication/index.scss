@@ -1,9 +1,29 @@
 .form-container {
-  border-radius: 10%;
+  background: linear-gradient(
+    45deg,
+    rgb(245, 181, 147) 0%,
+    rgba(166, 136, 117, 0.72) 24%,
+    rgba(133, 194, 223, 0.72) 63%
+  );
+  box-shadow: 0px 8rem 20rem 2rem rgba(255, 255, 255, 0.11);
+  border-radius: 25px;
+
+  max-width: 50vw;
+  min-width: 40vw;
+  padding: 5rem 2rem;
 }
-.landing-container {
-  border-radius: 10%;
-  margin: 1em;
+.landing {
+  padding-top: 5rem;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 139, 77, 1) 0%,
+    rgba(166, 136, 117, 0.72) 24%,
+    rgba(21, 132, 183, 0.72) 63%
+  );
+}
+.title-form {
+  padding: 2rem;
+  font-size: 2rem;
 }
 @media only screen and (max-width: 920px) {
   .header-container {

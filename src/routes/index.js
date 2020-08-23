@@ -233,7 +233,7 @@ const ROUTES = [
     },
   },
   {
-    path: '/testing',
+    path: '/:courseID/lesson/:id/testing',
     key: 'TESTING',
     exact: true,
     component: () => {

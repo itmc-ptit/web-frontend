@@ -9,11 +9,14 @@
   padding: 20px;
   min-width: 35em;
 
-  border-radius: 3%;
+  border-radius: 25px;
 
   background-color: #35416e;
   margin-right: 10em;
   margin-left: 10em;
+  &:hover {
+    box-shadow: 0rem 3rem 5rem 2rem rgba(255, 169, 10, 0.11);
+  }
 }
 .home-container__info--statics {
   height: 15em;

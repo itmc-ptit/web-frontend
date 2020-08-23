@@ -7,6 +7,8 @@ import { Loader } from '../index';
 
 const RegistrationForm = ({ toggleTab }) => {
   const history = useHistory();
+
+  const [err, setErr] = useState('');
   const [isLoading, setIsloading] = useState(false);
   const [state, setState] = useState({
     email: '',
@@ -28,13 +30,13 @@ const RegistrationForm = ({ toggleTab }) => {
       firstName: state.firstName,
       lastName: state.lastName,
     })
-      .then((res) => {
+      .then(() => {
         setIsloading(false);
         window.location.reload(false);
       })
       .catch((err) => {
         setIsloading(false);
-        console.log(err);
+        setErr(err.response.data.error.descriptions[0]);
       });
   };
 
@@ -45,7 +47,8 @@ const RegistrationForm = ({ toggleTab }) => {
       initialValues={{ remember: true }}
       onFinish={onFinish}
     >
-      <h2>Sign up</h2>
+      <h2 className="title-form">Sign up</h2>
+      {err !== '' && <p style={{ color: 'red' }}>[{err}]</p>}
       <Form.Item
         rules={[{ required: true, message: 'Please input your Email!' }]}
       >

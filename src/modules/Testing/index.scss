@@ -1,13 +1,21 @@
 .testing-content {
-  height: 80vh;
   background-color: rgb(41, 53, 80);
   width: 80vw;
 
   border-radius: 5px;
-  padding: 10px;
+  padding: 20px;
+  margin: 1rem;
 }
 .question h1,
 .question h3 {
   font-size: x-large;
   color: #fff;
+}
+
+.score {
+  position: fixed;
+
+  height: 4rem;
+  font-size: 1.2rem;
+  color: red;
 }
