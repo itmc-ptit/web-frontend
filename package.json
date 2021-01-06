@@ -6,7 +6,7 @@
     "@ant-design/icons": "^4.2.1",
     "antd": "^4.4.2",
     "antd-img-crop": "^3.9.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dedent": "^0.7.0",
     "jwt-decode": "^2.2.0",
     "node-sass": "^4.14.1",
